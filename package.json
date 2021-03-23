@@ -1,38 +1,38 @@
 {
-  "name": "code-noob",
-  "version": "1.0.0",
-  "description": "Discussion forum for new developers who are looking to get into coding but have no idea where to start",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeds/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bencyna/project2.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bencyna/project2/issues"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.3"
-  },
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "connect-session-sequelize": "^7.1.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.1",
-    "express-session": "^1.17.1",
-    "handlebars": "^4.7.7",
-    "mysql2": "^2.2.5",
-    "passport": "^0.4.1",
-    "sequelize": "^5.22.3",
-    "uuid": "^8.3.2"
-  },
-  "homepage": "https://github.com/bencyna/project2#readme"
+    "name": "code-noob",
+    "version": "1.0.0",
+    "description": "Discussion forum for new developers who are looking to get into coding but have no idea where to start",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "watch": "nodemon server.js",
+        "seed": "node seeds/seed.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bencyna/project2.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bencyna/project2/issues"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.3"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "connect-session-sequelize": "^7.1.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.1",
+        "express-session": "^1.17.1",
+        "handlebars": "^4.7.7",
+        "mysql2": "^2.2.5",
+        "passport": "^0.4.1",
+        "sequelize": "^5.22.3",
+        "uuid": "^8.3.2"
+    },
+    "homepage": "https://github.com/bencyna/project2#readme"
 }
