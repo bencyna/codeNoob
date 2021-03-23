@@ -83,4 +83,8 @@ router.get("/signup", async (req, res) => {
   res.render("signup");
 });
 
+router.get("/forum", async (req, res) => {
+  res.render("forum");
+});
+
 module.exports = router;
