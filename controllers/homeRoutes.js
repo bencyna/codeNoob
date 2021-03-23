@@ -8,19 +8,18 @@ router.get("/", (req, res) => {
 
 router.get("/homepage", (req, res) => {
   Post.findAll({
-    attribute: ["first_name", "last_name", "id", "email", "password"],
     include: [
       {
         model: Comment,
-        attribute: ["first_name", "last_name", "id", "email", "password"],
+        attribute: ["title", "post"],
         include: {
           model: User,
-          attributes: ["username", "email", "password"],
+          attributes: ["first_name", "email"],
         },
       },
       {
         model: User,
-        attributes: ["username", "email", "password"],
+        attributes: ["first_name", "email"],
       },
     ],
   })
@@ -40,27 +39,29 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
+
 router.get("/signup", (req, res) => {
   res.render("signup");
 });
-router.get("/post/id", (req, res) => {
+
+router.get("/post/:id", (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
     },
-    attribute: ["first_name", "last_name", "id", "email", "password"],
+    attribute: ["title", "post"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_id", "post_id", "user_id", "comments"],
+        attributes: ["comments"],
         include: {
           model: User,
-          attributes: ["username", "email", "password"],
+          attributes: ["first_name", "email"],
         },
       },
       {
         model: User,
-        attributes: ["username", "email", "password"],
+        attributes: ["first_name", "email"],
       },
     ],
   })
@@ -77,14 +78,6 @@ router.get("/post/id", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-});
-
-router.get("/signup", async (req, res) => {
-  res.render("signup");
-});
-
-router.get("/forum", async (req, res) => {
-  res.render("forum");
 });
 
 module.exports = router;
