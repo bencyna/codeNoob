@@ -1,5 +1,14 @@
-<div>homepage</div>
-<a href="/login"> login</a>
-<a href="/signup"> signup</a>
+{{> login}}
+{{> signup}}
 
-{{post.id}}
+<div id="hero-container" class="container is-fluid">
+    <h2>CODE NOOB</h2>
+    <p>find your answers</p>
+    <p>there are no stupid questions anymore</p>
+    <button type="button" id="loginButt">Login</button>
+    <button type="button" id="signButt">Sign Up</button>
+</div>
+
+<script src="/js/login.js"></script>
+<script src="/js/signUp.js"></script>
+
