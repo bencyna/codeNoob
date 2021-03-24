@@ -12,13 +12,14 @@ signBtn.addEventListener("click", function() {
 })
 
 // When the user clicks on <span> (x), close the modal
-closeSignupModalBtn.onclick = function() {
+closeSignupModalBtn.addEventListener("click", function() {
     signModal.classList.remove("is-active");
-}
+})
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target == signModal) {
+        signModal.classList.remove("is-active");
         signModal.style.display = "none";
     }
 }
