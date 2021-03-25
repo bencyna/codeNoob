@@ -6,15 +6,78 @@ body {
     font-family: "Cormorant Unicase", serif;
 }
 
-.postCard {}
+.navbar {
+    background-color: #fffcf5;
+}
+
+.textarea {
+    resize: vertical;
+}
+
+.postLink {
+    cursor: pointer;
+}
+
+.form-input {
+    width: 100%;
+}
+
+.postBtn {
+    justify-content: center;
+}
+
+.new-post-form {
+    width: 95vw;
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(250, 235, 246);
+    border: 3px solid black;
+}
+
+.welcomeBack h1 {
+    font-size: 50px;
+    font-weight: 600;
+    font-family: "Cormorant Unicase", serif;
+    text-align: center;
+}
+
+.welcomeBack textarea {
+    resize: vertical;
+    min-height: 40px;
+    max-height: 450px;
+}
+
+.textOffset {
+    padding-left: 15px;
+}
+
+.postCard {
+    width: 90%;
+    align-items: center;
+    max-height: fit-content;
+    background-color: #ece5d4fd;
+    padding: 15px;
+    margin: 15px;
+    border: 3px solid black;
+}
+
+.techCard {
+    width: 90%;
+    justify-items: center;
+    max-height: fit-content;
+    background-color: #ece5d4fd;
+    padding: 15px;
+    margin: 15px;
+    border: 3px solid black;
+}
 
 .postCard h2 {
-    font-size: 30px;
+    font-size: 18px;
     font-family: "utopia-std-headline", serif;
 }
 
 .postCard p {
-    font-size: 28px;
+    font-size: 12px;
 }
 
 .centerScreen {
@@ -168,9 +231,4 @@ body {
 
 #addComment {
     text-align: center;
-}
-
-.postBtn {
-    position: relative;
-    left: 77%;
 }
