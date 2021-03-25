@@ -7,9 +7,12 @@ var signBtn = document.getElementById("signButt");
 var closeSignupModalBtn = document.getElementById("closeSignupModal");
 
 // When the user clicks the button, open the modal 
-signBtn.addEventListener("click", function() {
-    signModal.classList.add("is-active");
-})
+if(signBtn){
+    signBtn.addEventListener("click", function() {
+        signModal.classList.add("is-active");
+    }, false);
+}
+
 
 // When the user clicks on <span> (x), close the modal
 closeSignupModalBtn.addEventListener("click", function() {
@@ -30,6 +33,7 @@ async function signupFormHandler(event) {
     const password = document.querySelector("#password-signup").value.trim();
     const firstName = document.querySelector("#first-name-signup").value.trim();
     const lastName = document.querySelector("#last-name-signup").value.trim();
+
 
     if (email && password && firstName && lastName) {
         const response = await fetch("/api/users/signup", {

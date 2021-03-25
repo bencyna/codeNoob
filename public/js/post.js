@@ -21,4 +21,5 @@ const newFormHandler = async (event) => {
   }
 };
 
+
 document.querySelector(".postBtn").addEventListener("click", newFormHandler);
