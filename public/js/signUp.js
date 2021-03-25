@@ -7,9 +7,12 @@ var signBtn = document.getElementById("signButt");
 var closeSignupModalBtn = document.getElementById("closeSignupModal");
 
 // When the user clicks the button, open the modal 
-signBtn.addEventListener("click", function() {
-    signModal.classList.add("is-active");
-})
+if(signBtn){
+    signBtn.addEventListener("click", function() {
+        signModal.classList.add("is-active");
+    }, false);
+}
+
 
 // When the user clicks on <span> (x), close the modal
 closeSignupModalBtn.addEventListener("click", function() {
