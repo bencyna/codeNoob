@@ -2,29 +2,24 @@
     <div class="column is-half">
         <div id="postCard">
 
-            {{#each posts as |post|}}
-            <h2>{{post.title}}</h2>
-            <p>{{user.first_name}}</p>
+            <form class="form new-post-form">
+                <div class="form-group">
+                    <label for="post-title">Post title:</label>
+                    <input class="form-input" type="text" id="post-name" name="post-name" />
+                </div>
+                <div class="form-group">
+                    <label for="project-content">Content:</label>
+                    <textarea class="form-input" id="post-content" name="post-content"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="postBtn btn-primary">Create</button>
+                </div>
 
-            {{/each}}
+                {{#each posts as |post|}}
+                <h2>{{post.title}}</h2>
+                <p>{{user.first_name}}</p>
+                {{/each}}
         </div>
-        <div id="landBenefits">
-            <ul>
-                <li>- community</li>
-                <li>- news and resources</li>
-                <li>- share and grow as a developer</li>
-            </ul>
-        </div>
-        <div id="landCallToAct">
-            <h2>find your answers</h2>
-            <h3>there are no stupid questions anymore</h3>
-        </div>
-        <div id="landingButtonCon" class="column is-two-thirds is-offset-2">
-            <button type="button" id="loginButt">login</button>
-            <button type="button" id="signButt">sign up</button>
-        </div>
-    </div>
-</div>
 
-<script src="/js/login.js"></script>
-<script src="/js/signUp.js"></script>
+
+        <script src="/js/post.js"></script>
