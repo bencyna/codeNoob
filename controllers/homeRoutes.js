@@ -6,32 +6,25 @@ router.get("/", (req, res) => {
   res.render("homepage");
 });
 
-router.get("/homepage", (req, res) => {
-  Post.findAll({
-    include: [
-      {
-        model: Comment,
-        attribute: ["title","post"],
-        include: {
+router.get("/dashboard", (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [
+        {
           model: User,
-          attributes: ["first_name", "email"],
+          attributes: ["first_name", "last_name"],
         },
-      },
-      {
-        model: User,
-        attributes: ["first_name", "email"],
-      },
-    ],
-  })
-    .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { posts, loggedIn: req.session.loggedIn });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+      ],
     });
+
+    const posts = postData.map((project) => project.get({ plain: true }));
+
+    res.render("dashboard", { posts, logged_in: req.session.logged_in });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -49,7 +42,7 @@ router.get("/post/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attribute: ["title","post"],
+    attribute: ["title", "post"],
     include: [
       {
         model: Comment,
@@ -78,6 +71,10 @@ router.get("/post/:id", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get("/forum", (req, res) => {
+  res.render("forum");
 });
 
 module.exports = router;
