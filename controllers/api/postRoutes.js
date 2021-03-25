@@ -4,9 +4,11 @@ const withAuth = require('../../utils/auth'); // need to make plan for this how 
 
 router.post('/dashboard',withAuth, async (req, res)=>{
     try {
-        const postData = await Post.create(
-           req.body
-        ); 
+        const postData = await Post.create({
+            post: req.body.content,
+            title: req.body.title,
+            user_id: req.session.user_id
+        }); 
         res.status(200).json(postData);
     } catch (error) {
         res.status(400).json(error);
