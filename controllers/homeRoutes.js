@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
 router.get("/dashboard", async (req, res) => {
   try {
     const postData = await Post.findAll({
+      order: [["createdAt", "DESC"]],
       include: [
         {
           model: User,
@@ -18,6 +19,7 @@ router.get("/dashboard", async (req, res) => {
     });
 
     const posts = postData.map((project) => project.get({ plain: true }));
+    console.log(posts);
 
     res.render("dashboard", { posts, logged_in: req.session.logged_in });
   } catch (error) {
