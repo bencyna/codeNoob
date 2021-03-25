@@ -1,9 +1,9 @@
-<div class="columns is-mobile">
-    <div class="column is-half">
-        <div id="postCard">
+ {{>nav}}
 
-            {{#if logged_in}}
-            <h1 class="welcomeBack">welcome back, {{users.first_name}}!!!</h1>
+<div class="dashPage">
+    {{#if logged_in}}
+        <div class="welcomeBack">
+            <h1>welcome back, {{user.first_name}}!!!</h1>
             <form class="form new-post-form">
                 <div class="form-group">
                     <label for="post-title">post title:</label><br>
@@ -17,13 +17,32 @@
                     <button type="button" class="postBtn btn-primary">create</button>
                 </div>
             </form>
-            {{/if}}
-
-            {{#each posts as |post|}}
-            <h2>{{post.title}}</h2>
-            <p>{{user.first_name}}</p>
-            {{/each}}
         </div>
+        
+    {{/if}}
+    <div class="columns is-mobile">
+        <div class="column is-half">
+            <h1 class="textOffset">recent posts</h1>
+            <div id="dashLeft">
+                {{#each posts as |post|}}
+                <div class="postCard">
+                    <h2 class="postLink" data-id={{post.id}}>{{post.title}}</h2>
+                    <p>{{user.first_name}}</p>
+                </div>                
+                {{/each}}
+            </div>
+        </div>
+        <div class="column is-half">
+            <h1 class="textOffset">today's technology</h1>
+            <div id="dashRight">
+                <div class="techCard">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-        <script src="/js/post.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/signUp.js"></script>
