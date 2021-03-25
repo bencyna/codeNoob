@@ -1,0 +1,13 @@
+{{#each posts as |post|}}
+<div class="yourPosts">
+    <div class="name">~{{user.name}}</div>
+    <div class="postTitle">
+        {{this.title}}
+    </div>
+    <div class="postContent">
+        {{this.post}}
+    </div>
+</div>
+<button class="deletePost btn-primary" id="deletePost" data-id={{this.id}}>Delete Post
+</button>
+{{/each}}

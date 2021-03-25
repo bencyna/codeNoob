@@ -2,23 +2,27 @@
     <div class="column is-half">
         <div id="postCard">
 
+            {{#if logged_in}}
+            <h1 class="welcomeBack">welcome back, {{users.first_name}}!!!</h1>
             <form class="form new-post-form">
                 <div class="form-group">
-                    <label for="post-title">Post title:</label>
+                    <label for="post-title">post title:</label><br>
                     <input class="form-input" type="text" id="post-name" name="post-name" />
                 </div>
                 <div class="form-group">
-                    <label for="project-content">Content:</label>
+                    <label for="project-content">content:</label><br>
                     <textarea class="form-input" id="post-content" name="post-content"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="postBtn btn-primary">Create</button>
+                    <button type="button" class="postBtn btn-primary">create</button>
                 </div>
+            </form>
+            {{/if}}
 
-                {{#each posts as |post|}}
-                <h2>{{post.title}}</h2>
-                <p>{{user.first_name}}</p>
-                {{/each}}
+            {{#each posts as |post|}}
+            <h2>{{post.title}}</h2>
+            <p>{{user.first_name}}</p>
+            {{/each}}
         </div>
 
 
