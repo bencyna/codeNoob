@@ -1,14 +1,9 @@
  {{>nav}}
 
-<<<<<<< HEAD
 <div class="dashPage">
     {{#if logged_in}}
         <div class="welcomeBack">
             <h1>welcome back, {{user.first_name}}!!!</h1>
-=======
-            {{#if logged_in}}
-            <h1 class="welcomeBack">welcome back, {{users.first_name}}!!!</h1>
->>>>>>> be5538b923c0e269fc606c7b9873165638e21277
             <form class="form new-post-form">
                 <div class="form-group">
                     <label for="post-title">post title:</label><br>
@@ -22,7 +17,6 @@
                     <button type="button" class="postBtn btn-primary">create</button>
                 </div>
             </form>
-<<<<<<< HEAD
         </div>
         
     {{/if}}
@@ -45,14 +39,6 @@
                     
                 </div>
             </div>
-=======
-            {{/if}}
-
-            {{#each posts as |post|}}
-            <h2>{{post.title}}</h2>
-            <p>{{user.first_name}}</p>
-            {{/each}}
->>>>>>> be5538b923c0e269fc606c7b9873165638e21277
         </div>
     </div>
 </div>
