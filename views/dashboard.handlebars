@@ -1,27 +1,25 @@
- {{> logout}} 
- {{> signup}}
-
 <div class="columns is-mobile">
     <div class="column is-half">
-        <div id = "postCard">
+        <div id="postCard">
+
             {{#each posts as |post|}}
-                <h2>{{post.title}}</h2>
-                <p>{{user.first_name}}</p>
-                
+            <h2>{{post.title}}</h2>
+            <p>{{user.first_name}}</p>
+
             {{/each}}
         </div>
-        <div id = "landBenefits">
+        <div id="landBenefits">
             <ul>
                 <li>- community</li>
                 <li>- news and resources</li>
                 <li>- share and grow as a developer</li>
             </ul>
         </div>
-        <div id = "landCallToAct">
+        <div id="landCallToAct">
             <h2>find your answers</h2>
             <h3>there are no stupid questions anymore</h3>
-        </div>      
-        <div id = "landingButtonCon" class = "column is-two-thirds is-offset-2">
+        </div>
+        <div id="landingButtonCon" class="column is-two-thirds is-offset-2">
             <button type="button" id="loginButt">login</button>
             <button type="button" id="signButt">sign up</button>
         </div>
@@ -30,28 +28,3 @@
 
 <script src="/js/login.js"></script>
 <script src="/js/signUp.js"></script>
-
-
-
-
-
-
-
-
-
-
-{{> post-info post}}
-{{#if loggedIn}}
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
-        <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input" />
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
-{{/if}}
-{{> comments post.comments}}
-{{#if loggedIn}} 
-<script src="/js/comment.js"></script>
-{{/if}}
