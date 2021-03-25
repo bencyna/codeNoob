@@ -8,18 +8,19 @@ var logBtn = document.getElementById("loginButt");
 var closeLoginModalBtn = document.getElementById("closeLoginModal");
 
 // When the user clicks the button, open the modal 
-logBtn.onclick = function() {
-    modal.classList.add("is-active");
-}
+logBtn.addEventListener("click", function() {
+    modal.classList.toggle("is-active");
+})
 
 // When the user clicks on <span> (x), close the modal
-closeLoginModalBtn.onclick = function() {
-    modal.classList.remove("is-active");
-}
+closeLoginModalBtn.addEventListener("click", function() {
+    modal.classList.toggle("is-active");
+})
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
+        console.log(modal);
         modal.style.display = "none";
     }
 }
@@ -40,7 +41,7 @@ const loginFormHandler = async(event) => {
         if (response.ok) {
             console.log(response);
 
-            document.location.replace("/");
+            document.location.replace("/dashboard");
         } else {
             console.log("Failed to log in");
         }
