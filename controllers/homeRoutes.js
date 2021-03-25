@@ -101,6 +101,9 @@ router.get("/user", withAuth, async (req, res) => {
         },
       ],
     });
+
+    const posts = postData.map((project) => project.get({ plain: true }));
+
     res.render("user", {
       posts,
       logged_in: req.session.logged_in,
