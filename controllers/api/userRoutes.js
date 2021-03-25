@@ -18,7 +18,7 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData, message: "You are now logged in" });
     });
   } catch (error) {
-    // res.status(400).json(error);
+    res.status(400).json(error);
     console.log(error);
     res.json(error);
   }
@@ -36,7 +36,7 @@ router.post("/signup", async (req, res) => {
     res.status(200).json(userData);
   } catch (error) {
     console.log(error);
-    // res.status(400).json(error);
+     res.status(400).json(error);
   }
 });
 
