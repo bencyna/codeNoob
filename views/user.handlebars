@@ -1,13 +1,18 @@
+<div class="welcomeBack">
+    <h1>Your Posts</h1>
+</div>
 {{#each posts as |post|}}
-<div class="yourPosts">
-    <div class="name">~{{user.name}}</div>
-    <div class="postTitle">
+<div class="post">
+    <div class="name">{{user.name}}</div>
+    <div class="postPage box postLink" data-id={{post.id}}>
         {{this.title}}
     </div>
-    <div class="postContent">
+    <div class="postContent box">
         {{this.post}}
     </div>
 </div>
-<button class="deletePost btn-primary" id="deletePost" data-id={{this.id}}>Delete Post
-</button>
+{{!-- <button class="deletePost btn-primary" id="deletePost" data-id={{this.id}}>Delete Post
+</button> --}}
 {{/each}}
+
+<script src="./js/post.js"></script>

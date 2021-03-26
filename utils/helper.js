@@ -10,4 +10,10 @@ module.exports = {
     }
     return word;
   },
+  check_true: (a, b) => {
+    if (a == b) {
+      return true;
+    }
+    return false;
+  },
 };

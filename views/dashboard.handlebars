@@ -1,24 +1,24 @@
- {{>nav}}
+{{>nav}}
 
 <div class="dashPage">
     {{#if logged_in}}
-        <div class="welcomeBack">
-            <h1>welcome back, {{user.first_name}}!!!</h1>
-            <form class="form new-post-form">
-                <div class="form-group">
-                    <label for="post-title">post title:</label><br>
-                    <input class="form-input" type="text" id="post-name" name="post-name" />
-                </div>
-                <div class="form-group">
-                    <label for="project-content">content:</label><br>
-                    <textarea class="form-input" id="post-content" name="post-content"></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="button" class="postBtn btn-primary">create</button>
-                </div>
-            </form>
-        </div>
-        
+    <div class="welcomeBack">
+        <h1>welcome back, {{users.first_name}}!!!</h1>
+        <form class="form new-post-form">
+            <div class="form-group">
+                <label for="post-title">post title:</label><br>
+                <input class="form-input" type="text" id="post-name" name="post-name" />
+            </div>
+            <div class="form-group">
+                <label for="project-content">content:</label><br>
+                <textarea class="form-input" id="post-content" name="post-content"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" class="postBtn btn-primary">create</button>
+            </div>
+        </form>
+    </div>
+
     {{/if}}
     <div class="columns is-mobile">
         <div class="column is-half">
@@ -27,8 +27,8 @@
                 {{#each posts as |post|}}
                 <div class="postCard">
                     <h2 class="postLink" data-id={{post.id}}>{{post.title}}</h2>
-                    <p>{{user.first_name}}</p>
-                </div>                
+                    <p>~{{user.first_name}}</p>
+                </div>
                 {{/each}}
             </div>
         </div>
@@ -36,13 +36,10 @@
             <h1 class="textOffset">today's technology</h1>
             <div id="dashRight">
                 <div class="techCard">
-                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="/js/login.js"></script>
-<script src="/js/signUp.js"></script>
+<script src="./js/post.js"></script>
