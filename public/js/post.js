@@ -21,5 +21,15 @@ const newFormHandler = async (event) => {
   }
 };
 
+const goToPost = async (event) => {
+  event.preventDefault();
+  console.log("workinh");
+  if (event.target.hasAttribute("data-id")) {
+    const id = event.target.getAttribute("data-id");
 
+    document.location.replace(`/api/posts/${id}`);
+  }
+};
+
+document.querySelector(".postLink").addEventListener("click", goToPost);
 document.querySelector(".postBtn").addEventListener("click", newFormHandler);

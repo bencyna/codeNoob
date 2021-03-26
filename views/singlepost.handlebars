@@ -1,4 +1,4 @@
- {{> post-info post}}
+{{!-- {{> post-info post}}
 {{#if loggedIn}}
 <div class="card">
     <h3 class="card-header"></h3>
@@ -10,6 +10,29 @@
 </div>
 {{/if}}
 {{> comments post.comments}}
-{{#if loggedIn}} 
+{{#if loggedIn}}
 <script src="/js/comment.js"></script>
-{{/if}}
+{{/if}} --}}
+
+<div id="titleForum">
+    <h1>CODE NOOB</h1>
+</div>
+<section class="post">
+    <div class="comments"></div>
+    <div class="bar">{{post.user.first_name}} {{post.user.last_name}}</div>
+    <div class="postPage box">{{post.title}}</div>
+    <div class="postContent box">
+        {{post.post}}
+    </div>
+    {{#each post.Comments as |comment|}}
+    <div>{{comment.user.first_name}}</div>
+    <div class="commentPage box">{{comments}}</div>
+    {{!-- <div class="commentOwner box"> I am a comment by the owner of the post</div> --}}
+    {{/each}}
+    <div class="form-group">
+        <input id="addComment" class="input column is-two-thirds is-offset-2" type="text"
+            placeholder="Add a new comment">
+        <button type="button" class="postCommentBtn btn-primary" data-id={{post.id}}>Create</button>
+    </div>
+</section>
+<script src="/js/comment.js"></script>

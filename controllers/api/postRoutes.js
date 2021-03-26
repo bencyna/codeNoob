@@ -1,92 +1,72 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
-const withAuth = require('../../utils/auth'); // need to make plan for this how we can use the auth in the post
-
-router.post('/dashboard',withAuth, async (req, res)=>{
-    try {
-        const postData = await Post.create({
-            post: req.body.content,
-            title: req.body.title,
-            user_id: req.session.user_id
-        }); 
-        res.status(200).json(postData);
-    } catch (error) {
-        res.status(400).json(error);
-    }
-});
-
-router.get('/dashboard', async (req, res)=>{
-    const posts = await Post.findAll( {
-        where: {
-            user_id: req.session.user_id,
-          },
-          include:[
-            {
-              model: User,
-              attributes: ["first_name", "last_name"],
-            },
-          ]
+const withAuth = require("../../utils/auth");
+router.post("/dashboard", async (req, res) => {
+  try {
+    const postData = await Post.create({
+      post: req.body.content,
+      title: req.body.title,
+      user_id: req.session.user_id,
     });
-    try {
-        res.render('dashboard', posts);
-    } catch (error) {
-        res.status(400).json(error);
-    }
+    res.status(200).json(postData);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 });
 
-router.get('/dashboard/:id', async (req, res)=>{
-    const posts = await Post.findOne({
-        where: {
-            // user_id: "4c877132-1e9c-4e41-ad04-1568e1ee6ce6",
-            id: req.params.id 
-          },
-          include:[
-            {
-              model: User,
-              attributes: ["first_name", "last_name"],
-            },
-            {
-                model:Comment,
-                attributes:['comments']
-            }
-          ]
-    });
-    try {
-        res.json( posts);
-    } catch (error) {
-        res.status(400).json(error);
-    }
-});
-
-// need to think
-router.put('/dashboard/:id',withAuth, async (req,res)=>{
-try {
-    const updatePostData = await Post.update({
+router.put("/dashboard/:id", async (req, res) => {
+  try {
+    const updatePostData = await Post.update(
+      {
         title: req.body.title,
-        post: req.body.post
-    },{
-     where: {
-         id: req.params.id,
-       }
-    });
-    res.status(200).json(updatePostData);            
-} catch (error) {
-    res.status(400).json(error);    
-}});
-
-router.delete('/dashboard/:id',withAuth, (req, res) => {
-    Post.destroy({
+        post: req.body.content,
+      },
+      {
         where: {
-            id: req.params.id
-        }
-    }).then(dbPostData => {
-        if (!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
-            return;
-        }
-        res.json(dbPostData);
-    }).catch(err => {
-        res.status(500).json(err);
+          id: req.body.id,
+        },
+      }
+    );
+    res.status(200).json(updatePostData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/:id", (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attribute: ["title", "post"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["comments"],
+        order: [["createdAt", "DESC"]],
+        include: {
+          model: User,
+          attributes: ["first_name", "email"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["first_name", "last_name", "email"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      const post = dbPostData.get({ plain: true });
+      console.log(post.Comments[1].user);
+      res.render("singlepost", { post, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 

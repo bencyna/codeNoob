@@ -26,7 +26,7 @@ router.get("/dashboard", async (req, res) => {
     });
 
     const users = userData.get({ plain: true });
-
+    console.log(users);
     const posts = postData.map((project) => project.get({ plain: true }));
 
     res.render("dashboard", { posts, users, logged_in: req.session.logged_in });
@@ -45,42 +45,6 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("signup");
-});
-
-router.get("/post/:id", (req, res) => {
-  Post.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attribute: ["title", "post"],
-    include: [
-      {
-        model: Comment,
-        attributes: ["comments"],
-        include: {
-          model: User,
-          attributes: ["first_name", "email"],
-        },
-      },
-      {
-        model: User,
-        attributes: ["first_name", "email"],
-      },
-    ],
-  })
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id" });
-        return;
-      }
-      const post = dbPostData.get({ plain: true });
-      console.log(post);
-      res.render("single-post", { post, loggedIn: req.session.loggedIn });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
 });
 
 // placeholder for post/:id
@@ -103,30 +67,10 @@ router.get("/user", withAuth, async (req, res) => {
     });
 
     const posts = postData.map((project) => project.get({ plain: true }));
+    console.log(posts);
 
     res.render("user", {
       posts,
-      logged_in: req.session.logged_in,
-    });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-router.get("/dashboard", withAuth, async (req, res) => {
-  try {
-    const userData = await User.findOne({
-      where: {
-        id: req.session.user_id,
-      },
-    });
-
-    const users = userData.map((user) => user.get({ plain: true }));
-    console.log(users);
-    console.log(users.first_name);
-
-    res.render("dashboard", {
-      users,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
