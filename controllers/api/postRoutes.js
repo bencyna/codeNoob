@@ -33,41 +33,41 @@ router.put("/dashboard/:id", async (req, res) => {
   }
 });
 
-router.get("/:id", (req, res) => {
-  Post.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attribute: ["title", "post"],
-    include: [
-      {
-        model: Comment,
-        attributes: ["comments"],
-        order: [["createdAt", "DESC"]],
-        include: {
-          model: User,
-          attributes: ["first_name", "email"],
-        },
-      },
-      {
-        model: User,
-        attributes: ["first_name", "last_name", "email"],
-      },
-    ],
-  })
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id" });
-        return;
-      }
-      const post = dbPostData.get({ plain: true });
-      console.log(post.Comments[1].user);
-      res.render("singlepost", { post, loggedIn: req.session.loggedIn });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.get("/:id", (req, res) => {
+//   Post.findOne({
+//     where: {
+//       id: req.params.id,
+//     },
+//     attribute: ["title", "post"],
+//     include: [
+//       {
+//         model: Comment,
+//         attributes: ["comments"],
+//         order: [["createdAt", "DESC"]],
+//         include: {
+//           model: User,
+//           attributes: ["first_name", "email"],
+//         },
+//       },
+//       {
+//         model: User,
+//         attributes: ["first_name", "last_name", "email"],
+//       },
+//     ],
+//   })
+//     .then((dbPostData) => {
+//       if (!dbPostData) {
+//         res.status(404).json({ message: "No post found with this id" });
+//         return;
+//       }
+//       const post = dbPostData.get({ plain: true });
+//       console.log(post.Comments[1].user);
+//       res.render("singlepost", { post, loggedIn: req.session.loggedIn });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;

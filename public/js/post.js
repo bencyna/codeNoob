@@ -27,7 +27,7 @@ const goToPost = async (event) => {
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
 
-    document.location.replace(`/api/posts/${id}`);
+    document.location.replace(`post/${id}`);
   }
 };
 

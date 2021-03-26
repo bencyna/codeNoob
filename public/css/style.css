@@ -210,6 +210,7 @@ body {
   padding-left: 1%;
 }
 
+.form-group,
 .post {
   width: 100%;
   padding: 2% 5%;
@@ -217,6 +218,11 @@ body {
 
 .commentPage {
   width: 55%;
+  float: right;
+  clear: both;
+}
+
+.commentBar {
   float: right;
   clear: both;
 }
@@ -239,4 +245,13 @@ body {
 .postContent {
   background-color: #808080;
   color: white;
+}
+
+.postBar {
+  text-align: right;
+}
+
+.postCommentBtn {
+  position: relative;
+  float: right;
 }
