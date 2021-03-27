@@ -1,6 +1,40 @@
 {{>nav}}
 
 <div class="dashPage">
+    <div class="dash_container">
+        <img id="heroImage" src="./images/hero_medium.jpeg"></img>
+        {{#if logged_in}}
+        <div class="welcomeBack centerScreen">
+            <h1>Welcome back, {{users.first_name}}</h1>
+            <h2>It is great to have you here and contributing!</h2>
+            <form class="form new-post-form">
+                <div class="form-group">
+                    <label for="post-title">post title:</label><br>
+                    <input class="form-input" type="text" id="post-name" name="post-name" />
+                </div>
+                <div class="form-group">
+                    <label for="project-content">content:</label><br>
+                    <textarea class="form-input" id="post-content" name="post-content"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="postBtn btn-primary">create</button>
+                </div>
+            </form>
+        </div>
+        {{/if}}
+    </div>
+    <div class="block"></div>
+    <div class="columns is-mobile dashboard">
+        <div class="column is-10 is-offset-1">
+            <div id="dashboardCon">
+                <h1>Discussions and Articles</h1>
+                <div class="noobBox">
+                    {{#each posts as |post|}}
+                    <div class="postCard">
+                        <h2 class="postLink" data-id={{post.id}}>{{post.title}}</h2>
+                        <p>{{user.first_name}}</p>
+                    </div>
+                    {{/each}}
     {{#if logged_in}}
     <div class="welcomeBack">
         <h1>welcome back, {{users.first_name}}!!!</h1>
