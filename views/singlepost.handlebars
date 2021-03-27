@@ -34,11 +34,13 @@
             placeholder="Add a new comment">
     </div>
     {{#each post.Comments as |comment|}}
-    <div class="commentOwner box">{{comments}}</div>
-
+    {{#ifEquals post.user_id comment.user.id}}
+    <div class="ownerBar">~{{comment.user.first_name}}</div>
+    <div class="commentOwner box">{{comment.comments}}</div>
+    {{else}}
     <div class="commentBar">~{{comment.user.first_name}}</div>
-    <div class="commentPage box">{{comments}}</div>
-    {{!-- <div class="commentOwner box"> I am a comment by the owner of the post</div> --}}
+    <div class="commentPage box">{{comment.comments}}</div>
+    {{/ifEquals}}
     {{/each}}
 
 </section>

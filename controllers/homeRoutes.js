@@ -106,12 +106,13 @@ router.get("/post/:id", (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
-      console.log(post);
 
-      // let author;
-      // if (post.Comments.user.id == post.user.id) {
-      //   author = true;
-      // }
+      console.log(
+        "comment id is " +
+          post.Comments[1].user.id +
+          ". post id is " +
+          post.user_id
+      );
 
       res.render("singlepost", {
         post,

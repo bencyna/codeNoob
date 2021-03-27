@@ -222,6 +222,10 @@ body {
   clear: both;
 }
 
+.ownerBar {
+  clear: both;
+}
+
 .commentBar {
   float: right;
   clear: both;
