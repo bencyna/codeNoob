@@ -1,9 +1,12 @@
  {{>nav}}
 
 <div class="dashPage">
-    {{#if logged_in}}
-        <div class="welcomeBack">
-            <h1>welcome back, {{users.first_name}}!!!</h1>
+    <div class="dash_container">
+        <img id="heroImage" src="./images/hero_medium.jpeg"></img>
+        {{#if logged_in}}
+        <div class="welcomeBack centerScreen">
+            <h1>Welcome back, {{users.first_name}}</h1>
+            <h2>It is great to have you here and contributing!</h2>
             <form class="form new-post-form">
                 <div class="form-group">
                     <label for="post-title">post title:</label><br>
@@ -18,25 +21,20 @@
                 </div>
             </form>
         </div>
-        
-    {{/if}}
-    <div class="columns is-mobile">
-        <div class="column is-half">
-            <h1 class="textOffset">recent posts</h1>
-            <div id="dashLeft">
-                {{#each posts as |post|}}
-                <div class="postCard">
-                    <h2 class="postLink" data-id={{post.id}}>{{post.title}}</h2>
-                    <p>{{user.first_name}}</p>
-                </div>                
-                {{/each}}
-            </div>
-        </div>
-        <div class="column is-half">
-            <h1 class="textOffset">today's technology</h1>
-            <div id="dashRight">
-                <div class="techCard">
-                    
+        {{/if}}
+    </div>
+    <div class="block"></div>
+    <div class="columns is-mobile dashboard">
+        <div class="column is-10 is-offset-1">
+            <div id="dashboardCon">
+                <h1>Discussions and Articles</h1>
+                <div class="noobBox">
+                    {{#each posts as |post|}}
+                    <div class="postCard">
+                        <h2 class="postLink" data-id={{post.id}}>{{post.title}}</h2>
+                        <p>{{user.first_name}}</p>
+                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
