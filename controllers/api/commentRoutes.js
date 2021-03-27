@@ -1,38 +1,46 @@
 const router = require("express").Router();
 const { Comment } = require("../../models");
-const withAuth = require('../../utils/auth');
+const withAuth = require("../../utils/auth");
 
-router.post('/dashboard', withAuth, async (req, res)=>{
-    try {
-        const addComment = await Comment.create({
-            comments: req.body.comment,
-            user_id:req.session.user_id,
-            post_id:req.body.post_id
-        });
-        res.status(200).json(addComment);
-    } catch (error) {
-        console.log(error);
-        res.status(400).json(error);
-    }
+router.post("/dashboard", withAuth, async (req, res) => {
+  try {
+    const addComment = await Comment.create({
+      comments: req.body.content,
+      user_id: req.session.user_id,
+      post_id: req.body.postId,
+    });
+
+    console.log(addComment);
+
+    const commentAdd = addComment.get({ plain: true });
+    console.log(commentAdd);
+    res.status(200).json(commentAdd);
+  } catch (error) {
+    console.log(error);
+    // res.status(400).json(error);
+  }
 });
 
-router.put('/dashboard/:id',withAuth, async ()=>{
-    try {
-        const updateComment = await Comment.update({
-            comments: req.body.comment,
-        },{
-            where: {
-                id: req.params.id,
-              }
-        });
-        res.status(200).json(updateComment);
-    } catch (error) {
-        console.log(error);
-        res.status(400).json(error);
-    }
+router.put("/dashboard/:id", withAuth, async () => {
+  try {
+    const updateComment = await Comment.update(
+      {
+        comments: req.body.comment,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(updateComment);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
 });
 
-// Need to think 
+// Need to think
 // router.get('/dashboard', async(req, res)=>{
 //     try {
 //         const allComment = await Comment.findAll( {
@@ -49,17 +57,17 @@ router.put('/dashboard/:id',withAuth, async ()=>{
 //     }
 // })
 
-router.delete('/dashboard/:id',withAuth, async ()=>{
-    try {
-        const deleteComment = await Comment.destroy({
-            where: {
-                id: req.params.id,
-              }
-        });
-        res.status(200).json(deleteComment);
-    } catch (error) {
-        console.log(error);
-        res.status(400).json(error);
-    }
+router.delete("/dashboard/:id", withAuth, async () => {
+  try {
+    const deleteComment = await Comment.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deleteComment);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
 });
 module.exports = router;

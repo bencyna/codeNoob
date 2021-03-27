@@ -1,4 +1,4 @@
- {{> post-info post}}
+{{!-- {{> post-info post}}
 {{#if loggedIn}}
 <div class="card">
     <h3 class="card-header"></h3>
@@ -10,6 +10,36 @@
 </div>
 {{/if}}
 {{> comments post.comments}}
-{{#if loggedIn}} 
+{{#if loggedIn}}
 <script src="/js/comment.js"></script>
-{{/if}}
+{{/if}} --}}
+
+<div id="titleForum">
+    <h1>CODE NOOB</h1>
+</div>
+<section class="post">
+    <div class="comments"></div>
+    <div class="postBar float-container">
+        <div class="postBar float-child">~{{post.user.first_name}} {{post.user.last_name}}</div>
+        <button id="deletePost" class="postBar float-child" data-id={{post.id}}>delete<i
+                class="far fa-trash-alt"></i></button>
+    </div>
+    <div class="postPage box">{{post.title}}</div>
+    <div class="postContent box">
+        {{post.post}}
+    </div>
+    <div class="form-group">
+        <button type="button" class="postCommentBtn button" data-id={{post.id}}>Create</button>
+        <input id="addComment" class="input column is-two-thirds is-offset-2" type="text"
+            placeholder="Add a new comment">
+    </div>
+    {{#each post.Comments as |comment|}}
+    <div class="commentOwner box">{{comments}}</div>
+
+    <div class="commentBar">~{{comment.user.first_name}}</div>
+    <div class="commentPage box">{{comments}}</div>
+    {{!-- <div class="commentOwner box"> I am a comment by the owner of the post</div> --}}
+    {{/each}}
+
+</section>
+<script src="/js/comment.js"></script>
