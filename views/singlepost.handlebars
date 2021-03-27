@@ -20,13 +20,14 @@
             placeholder="Add a new comment">
     </div>
     {{#each post.Comments as |comment|}}
-    {{#ifEquals post.user_id comment.user.id }}
+    {{!-- this works if comment.user.id is as a string --}}
+    {{#ifeq post.user_id comment.user.id }}
     <div class="ownerBar">~{{comment.user.first_name}}</div>
     <div class="commentOwner box">{{comment.comments}}</div>
     {{else}}
     <div class="commentBar">~{{comment.user.first_name}}</div>
     <div class="commentPage box">{{comment.comments}}</div>
-    {{/ifEquals}}
+    {{/ifeq}}
     {{/each}}
 
 </section>

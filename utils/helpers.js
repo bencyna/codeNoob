@@ -13,6 +13,12 @@ module.exports = {
   ifEquals: (arg1, arg2, options) => {
     return arg1 == arg2 ? options.fn(this) : options.inverse(this);
   },
+  ifeq: (a, b, options) => {
+    if (a == b) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  },
 
   limit: (arr, limit) => {
     if (!Array.isArray(arr)) {
