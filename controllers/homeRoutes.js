@@ -47,11 +47,6 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-// placeholder for post/:id
-router.get("/forum", (req, res) => {
-  res.render("forum");
-});
-
 router.get("/user", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -106,13 +101,14 @@ router.get("/post/:id", (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
+      console.log(post);
 
-      console.log(
-        "comment id is " +
-          post.Comments[1].user.id +
-          ". post id is " +
-          post.user_id
-      );
+      // console.log(
+      //   "comment id is " +
+      //     post.Comments[2].user.id +
+      //     ". post id is " +
+      //     post.user_id
+      // );
 
       res.render("singlepost", {
         post,

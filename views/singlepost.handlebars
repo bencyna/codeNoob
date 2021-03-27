@@ -1,18 +1,4 @@
-{{!-- {{> post-info post}}
-{{#if loggedIn}}
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
-        <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input" />
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
-{{/if}}
-{{> comments post.comments}}
-{{#if loggedIn}}
-<script src="/js/comment.js"></script>
-{{/if}} --}}
+{{>nav}}
 
 <div id="titleForum">
     <h1>CODE NOOB</h1>
@@ -34,7 +20,7 @@
             placeholder="Add a new comment">
     </div>
     {{#each post.Comments as |comment|}}
-    {{#ifEquals post.user_id comment.user.id}}
+    {{#ifEquals post.user_id comment.user.id }}
     <div class="ownerBar">~{{comment.user.first_name}}</div>
     <div class="commentOwner box">{{comment.comments}}</div>
     {{else}}

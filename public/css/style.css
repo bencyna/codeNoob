@@ -9,7 +9,7 @@ body {
 }
 
 .navbar {
-  background-color: #2e2c29;
+  background-color: #2e2c29 !important;
 }
 
 .navbar h1 {
