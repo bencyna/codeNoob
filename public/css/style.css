@@ -240,6 +240,7 @@ body {
   margin-bottom: 0 !important;
   font-weight: 700;
   text-align: center;
+  clear: both;
 }
 
 .postContent {
@@ -249,6 +250,8 @@ body {
 
 .postBar {
   text-align: right;
+  float: right;
+  border-radius: 10px;
 }
 
 .postCommentBtn {

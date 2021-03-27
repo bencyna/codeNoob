@@ -23,4 +23,31 @@ const newComment = async (event) => {
   }
 };
 
+const deleteButtonHandler = async (event) => {
+  event.preventDefault();
+
+  if (event.target.hasAttribute("data-id")) {
+    const deleteConfirm = confirm("Are you sure you want to delete this post");
+    if (!deleteConfirm) {
+      return;
+    }
+
+    const id = event.target.getAttribute("data-id");
+
+    const response = await fetch(`/api/posts/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      console.log("successful delete");
+      window.location.replace("/dashboard");
+    } else {
+      alert("Failed to delete Post");
+    }
+  }
+};
+
 document.querySelector(".postCommentBtn").addEventListener("click", newComment);
+document
+  .querySelector("#deletePost")
+  .addEventListener("click", deleteButtonHandler);

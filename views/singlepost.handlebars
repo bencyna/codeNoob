@@ -19,7 +19,11 @@
 </div>
 <section class="post">
     <div class="comments"></div>
-    <div class="postBar">~{{post.user.first_name}} {{post.user.last_name}}</div>
+    <div class="postBar float-container">
+        <div class="postBar float-child">~{{post.user.first_name}} {{post.user.last_name}}</div>
+        <button id="deletePost" class="postBar float-child" data-id={{post.id}}>delete<i
+                class="far fa-trash-alt"></i></button>
+    </div>
     <div class="postPage box">{{post.title}}</div>
     <div class="postContent box">
         {{post.post}}
