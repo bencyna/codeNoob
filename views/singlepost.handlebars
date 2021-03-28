@@ -1,4 +1,5 @@
 {{>nav}}
+{{>signup}}
 
 <div id="titleForum">
     <h1>CODE NOOB</h1>
@@ -22,7 +23,8 @@
     </div>
     {{/if}}
     {{#unless logged_in}}
-    <h2>Log in to add a comment or sign up here!</h2>
+    <h2>Log in to add a comment or sign up <button id="signUpComment">here!</button></h2>
+    <script src="/js/signUp.js"></script>
     {{/unless}}
     {{#each post.Comments as |comment|}}
     {{!-- this works if comment.user.id is as a string --}}
