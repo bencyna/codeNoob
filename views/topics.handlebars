@@ -1,0 +1,14 @@
+{{>nav}}
+
+<div class="columns is-mobile dashboard">
+    <div class="column is-10 is-offset-1">
+        <div id="dashboardCon"></div>
+        <h1>Discussions and Articles</h1>
+        <div class="noobBox">
+            {{#each topics.Posts as |post|}}
+            <div class="postCard">
+                <h2 class="postLink" data-id={{post.id}}>{{post.title}}</h2>
+                <p>{{user.first_name}}</p>
+            </div>
+            {{/each}}
+        </div>

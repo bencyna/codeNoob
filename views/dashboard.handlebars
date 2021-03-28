@@ -35,4 +35,9 @@
                         <p>{{user.first_name}}</p>
                     </div>
                     {{/each}}
-                    <script src="./js/post.js"></script>
+                    {{#each topics as |topic|}}
+                    <div class="postCard topicCard">
+                        <h2 class="topicClick" data-id={{this.id}}>{{this.topic_name}}</h2>
+                    </div>
+                    {{/each}}
+                    <script src="./js/topics.js"></script>
