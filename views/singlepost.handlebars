@@ -1,18 +1,5 @@
-{{!-- {{> post-info post}}
-{{#if loggedIn}}
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
-        <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input" />
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
-{{/if}}
-{{> comments post.comments}}
-{{#if loggedIn}}
-<script src="/js/comment.js"></script>
-{{/if}} --}}
+{{>nav}}
+{{>signup}}
 
 <div id="titleForum">
     <h1>CODE NOOB</h1>
@@ -28,17 +15,26 @@
     <div class="postContent box">
         {{post.post}}
     </div>
+    {{#if logged_in}}
     <div class="form-group">
         <button type="button" class="postCommentBtn button" data-id={{post.id}}>Create</button>
         <input id="addComment" class="input column is-two-thirds is-offset-2" type="text"
             placeholder="Add a new comment">
     </div>
+    {{/if}}
+    {{#unless logged_in}}
+    <h2>Log in to add a comment or sign up <button id="signUpComment">here!</button></h2>
+    <script src="/js/signUp.js"></script>
+    {{/unless}}
     {{#each post.Comments as |comment|}}
-    <div class="commentOwner box">{{comments}}</div>
-
+    {{!-- this works if comment.user.id is as a string --}}
+    {{#ifeq post.user_id comment.user.id }}
+    <div class="ownerBar">~{{comment.user.first_name}}</div>
+    <div class="commentOwner box">{{comment.comments}}</div>
+    {{else}}
     <div class="commentBar">~{{comment.user.first_name}}</div>
-    <div class="commentPage box">{{comments}}</div>
-    {{!-- <div class="commentOwner box"> I am a comment by the owner of the post</div> --}}
+    <div class="commentPage box">{{comment.comments}}</div>
+    {{/ifeq}}
     {{/each}}
 
 </section>

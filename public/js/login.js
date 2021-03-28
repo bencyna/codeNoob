@@ -1,14 +1,19 @@
 // Get the modal
-var modal = document.getElementById("loginModal");
+const modal = document.getElementById("loginModal");
 
 // Get the button that opens the modal
-var logBtn = document.getElementById("loginButt");
+const logBtn = document.getElementById("loginButt");
 
 // Get the <span> element that closes the modal
-var closeLoginModalBtn = document.getElementById("closeLoginModal");
+const closeLoginModalBtn = document.getElementById("closeLoginModal");
+
+const navLogin = document.getElementById("loginBtn");
 
 // When the user clicks the button, open the modal
-logBtn.addEventListener("click", function () {
+document.addEventListener("click", function (event) {
+  if (event.target !== logBtn && event.target !== navLogin) {
+    return;
+  }
   modal.classList.toggle("is-active");
 });
 

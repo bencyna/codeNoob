@@ -1,29 +1,35 @@
- {{> login}}
- {{> signup}}
+{{> login}}
+{{> signup}}
 
 <div class="columns is-mobile">
     <div class="column is-full centerScreen">
-        <div id = "landTitle">
+        <div id="landTitle">
             <h1>code noob</h1>
-            <input id="landingSearch" class="input column is-two-thirds is-offset-2" type="text" placeholder="enter search by keywords...">
+            <h5 id="searchTitle">Search for something specific:</h5>
+            <input id="landingSearch" class="input column is-two-thirds is-offset-2" type="text"
+                placeholder="enter search by keywords...">
+            <div id="browse">
+                <h5 class="browse"> or Browse here: <a href="/dashboard" id="browseBtn">
+                        <i data-feather="globe"></i>
+                    </a href="/dashboard"></h5>
+            </div>
         </div>
-        <div id = "landBenefits">
+        <div id="landBenefits">
             <ul>
                 <li>- community</li>
                 <li>- news and resources</li>
                 <li>- share and grow as a developer</li>
             </ul>
         </div>
-        <div id = "landCallToAct">
+        <div id="landCallToAct">
             <h2>find your answers</h2>
             <h3>there are no stupid questions anymore</h3>
-        </div>      
-        <div id = "landingButtonCon" class = "column is-two-thirds is-offset-2">
+        </div>
+        <div id="landingButtonCon" class="column is-two-thirds is-offset-2">
             <button type="button" id="loginButt">login</button>
             <button type="button" id="signButt">sign up</button>
         </div>
     </div>
 </div>
-
 <script src="/js/login.js"></script>
 <script src="/js/signUp.js"></script>

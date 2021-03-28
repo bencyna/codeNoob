@@ -19,19 +19,22 @@ router.get("/dashboard", async (req, res) => {
       ],
     });
 
-    const userData = await User.findOne({
-      where: {
-        id: req.session.user_id,
-      },
-    });
+    let users;
+    if (req.session.user_id) {
+      const userData = await User.findOne({
+        where: {
+          id: req.session.user_id,
+        },
+      });
+      users = userData.get({ plain: true });
+    }
 
-    const users = userData.get({ plain: true });
-    console.log(users);
     const posts = postData.map((project) => project.get({ plain: true }));
 
     res.render("dashboard", { posts, users, logged_in: req.session.logged_in });
   } catch (error) {
-    res.status(500).json(error);
+    console.log(error);
+    // res.status(500).json(error);
   }
 });
 
@@ -45,11 +48,6 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("signup");
-});
-
-// placeholder for post/:id
-router.get("/forum", (req, res) => {
-  res.render("forum");
 });
 
 router.get("/user", withAuth, async (req, res) => {
@@ -108,14 +106,16 @@ router.get("/post/:id", (req, res) => {
       const post = dbPostData.get({ plain: true });
       console.log(post);
 
-      // let author;
-      // if (post.Comments.user.id == post.user.id) {
-      //   author = true;
-      // }
+      // console.log(
+      //   "comment id is " +
+      //     post.Comments[2].user.id +
+      //     ". post id is " +
+      //     post.user_id
+      // );
 
       res.render("singlepost", {
         post,
-        loggedIn: req.session.loggedIn,
+        logged_in: req.session.logged_in,
       });
     })
     .catch((err) => {

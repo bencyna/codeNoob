@@ -47,7 +47,10 @@ const deleteButtonHandler = async (event) => {
   }
 };
 
-document.querySelector(".postCommentBtn").addEventListener("click", newComment);
+const postComment = document.querySelector(".postCommentBtn");
+if (postComment) {
+  postComment.addEventListener("click", newComment);
+}
 document
   .querySelector("#deletePost")
   .addEventListener("click", deleteButtonHandler);

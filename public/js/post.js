@@ -35,4 +35,7 @@ for (let i = 0; i < singPost.length; i++) {
   singPost[i].addEventListener("click", goToPost);
 }
 
-document.querySelector(".postBtn").addEventListener("click", newFormHandler);
+const post = document.querySelector(".postBtn");
+if (post) {
+  post.addEventListener("click", newFormHandler);
+}
