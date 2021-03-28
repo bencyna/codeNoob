@@ -3,10 +3,10 @@
 <div class="dashPage">
     <div class="dash_container">
         <img id="heroImage" src="./images/hero_medium.jpeg"></img>
-        {{#if logged_in}}
         <div class="welcomeBack centerScreen">
-            <h1>Welcome back, {{users.first_name}}</h1>
-            <h2>It is great to have you here and contributing!</h2>
+            <h1>Welcome {{#if logged_in}}back, {{users.first_name}} {{/if}}</h1>
+            <h2>It is great to have you here {{#if logged_in}} and contributing! {{/if}}</h2>
+            {{#if logged_in}}
             <form class="form new-post-form">
                 <div class="form-group">
                     <label for="post-title">post title:</label><br>
@@ -20,8 +20,8 @@
                     <button type="button" class="postBtn btn-primary">create</button>
                 </div>
             </form>
+            {{/if}}
         </div>
-        {{/if}}
     </div>
     <div class="block"></div>
     <div class="columns is-mobile dashboard">

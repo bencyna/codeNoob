@@ -14,11 +14,16 @@
     <div class="postContent box">
         {{post.post}}
     </div>
+    {{#if logged_in}}
     <div class="form-group">
         <button type="button" class="postCommentBtn button" data-id={{post.id}}>Create</button>
         <input id="addComment" class="input column is-two-thirds is-offset-2" type="text"
             placeholder="Add a new comment">
     </div>
+    {{/if}}
+    {{#unless logged_in}}
+    <h2>Log in to add a comment or sign up here!</h2>
+    {{/unless}}
     {{#each post.Comments as |comment|}}
     {{!-- this works if comment.user.id is as a string --}}
     {{#ifeq post.user_id comment.user.id }}

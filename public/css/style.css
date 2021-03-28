@@ -65,6 +65,7 @@ body {
   resize: vertical;
 }
 
+#logoutBtn,
 .postLink {
   cursor: pointer;
 }
@@ -150,7 +151,6 @@ body {
   border: 1px solid rgb(190, 190, 190);
   border-radius: 16px;
 }
-
 .postCard:hover {
   width: 40%;
   max-height: fit-content;
@@ -243,8 +243,14 @@ body {
   padding: 0;
 }
 
+#browse,
+#searchTitle,
 #landingSearch {
   text-align: center;
+}
+
+#browseBtn {
+  margin-top: 10px;
 }
 
 #landingButtonCon {
@@ -382,4 +388,20 @@ body {
 .postCommentBtn {
   position: relative;
   float: right;
+}
+
+.inBtn,
+#logoutBtn {
+  border: none;
+  background-color: #2e2c29;
+  color: honeydew;
+}
+
+.inBtn:hover,
+#logoutBtn:hover {
+  /* width: 40%; */
+  max-height: fit-content;
+  background-color: rgba(255, 255, 255, 0.692);
+  cursor: pointer;
+  transition: 0.2s ease-in;
 }
