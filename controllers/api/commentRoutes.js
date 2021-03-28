@@ -57,7 +57,7 @@ router.put("/dashboard/:id", withAuth, async () => {
 //     }
 // })
 
-router.delete("/dashboard/:id", withAuth, async () => {
+router.delete("/dashboard/:id", withAuth, async (req, res) => {
   try {
     const deleteComment = await Comment.destroy({
       where: {

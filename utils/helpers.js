@@ -15,6 +15,7 @@ module.exports = {
   },
   ifeq: (a, b, options) => {
     if (a == b) {
+      console.log("hello");
       return options.fn(this);
     }
     return options.inverse(this);
@@ -25,5 +26,8 @@ module.exports = {
       return [];
     }
     return arr.slice(0, limit);
+  },
+  log: (something) => {
+    console.log(something);
   },
 };

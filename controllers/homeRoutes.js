@@ -85,7 +85,7 @@ router.get("/post/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["comments"],
+        attributes: ["comments", "id", "user_id"],
         order: [["createdAt", "DESC"]],
         include: {
           model: User,
@@ -104,18 +104,11 @@ router.get("/post/:id", (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
-      console.log(post);
-
-      // console.log(
-      //   "comment id is " +
-      //     post.Comments[2].user.id +
-      //     ". post id is " +
-      //     post.user_id
-      // );
 
       res.render("singlepost", {
         post,
         logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
       });
     })
     .catch((err) => {

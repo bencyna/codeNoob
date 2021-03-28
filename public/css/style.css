@@ -390,6 +390,7 @@ body {
   float: right;
 }
 
+#deletPost,
 .inBtn,
 #logoutBtn {
   border: none;
@@ -397,10 +398,16 @@ body {
   color: honeydew;
 }
 
+/* #deletePost, */
 .inBtn:hover,
 #logoutBtn:hover {
   max-height: fit-content;
   background-color: rgba(255, 255, 255, 0.692);
   cursor: pointer;
   transition: 0.2s ease-in;
+}
+
+.hide {
+  display: block;
+  visibility: hidden;
 }
