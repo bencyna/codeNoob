@@ -75,9 +75,8 @@ const deleteCommentHandler = async (event) => {
     const response = await fetch(`/api/comments/dashboard/${id}`, {
       method: "DELETE",
     });
-
+    console.log(response.ok);
     if (response.ok) {
-      console.log("successful delete");
       location.reload();
     } else {
       alert("Failed to delete comment");

@@ -10,26 +10,26 @@ module.exports = {
     }
     return word;
   },
-  ifeq: (a, b, options) => {
+  ifeq: function (a, b, options) {
     if (a == b) {
       return options.fn(this);
     }
     return options.inverse(this);
   },
-  unlesseq: (a, b, options) => {
+  unlesseq: function (a, b, options) {
     if (a !== b) {
       return options.fn(this);
     }
     return options.inverse(this);
   },
 
-  limit: (arr, limit) => {
+  limit: function (arr, limit) {
     if (!Array.isArray(arr)) {
       return [];
     }
     return arr.slice(0, limit);
   },
-  log: (something) => {
+  log: function (something) {
     console.log(something);
   },
 };

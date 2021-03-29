@@ -1,6 +1,7 @@
 {{>nav}}
 {{>signup}}
 
+
 <section class="post">
     <div class="comments"></div>
     <div class="postBar float-container">
@@ -29,17 +30,15 @@
     {{#ifeq posts.user_id comment.user.id }}
     {{!-- We have to figure out how to show the delete button only to the owner of the comment --}}
     <div class="ownerBar">Owner~{{comment.user.first_name}}</div>
-    <div class="commentOwner box">{{#ifeq user_id wrongcomment.user_id}} <button class="deletePost delete"
+    <div class="commentOwner box">{{#ifeq user_id comment.user_id}} <button class="deletePost delete"
             data-id={{comment.id}}></button>
         {{/ifeq}}
         {{comment.comments}}</div>
     {{else}}
-    <div class="commentBar">~{{comment.user.first_name}}{{#ifeq this.user_id comment.user_id}} <button
+    <div class="commentBar">~{{comment.user.first_name}}{{#ifeq user_id comment.user_id}} <button
             class="deleteComment delete" data-id={{comment.id}}>
         </button>
         {{/ifeq}}
-        {{#log this.user_id}}
-        {{/log}}
     </div>
     <div class="commentPage box">{{comment.comments}}</div>
     {{#ifeq user.id req.session.user_id}}
