@@ -13,12 +13,11 @@
             {{/if}}
         </div>
     </div>
-    <div class="block"></div>
-    <div class="columns is-mobile dashboard">
+    <div class="columns is-mobile is-vcentered">
         <div class="column is-10 is-offset-1">
             <div id="dashboardCon">
-                <h1>Discussions and Articles</h1>
-                <div class="noobBox">
+                <div class="dashLefty">
+                    <h1>Topics</h1>
                     <div class="columns is-one-third">
                         {{#each topics as |topic|}}
                         <div class="postCard topicCard">
@@ -26,6 +25,9 @@
                         </div>
                         {{/each}}
                     </div>
+                </div>
+                <div class="dashRighty">
+                    <h1>Discussions and Articles</h1>
                     <div class="columns is-two-thirds">
                         {{#each (limit posts 10)}}
                         <div class="postCard postLink middle" data-id={{this.id}}>
