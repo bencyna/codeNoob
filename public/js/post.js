@@ -1,6 +1,5 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
-  console.log("hello");
   const title = document.querySelector("#post-name").value.trim();
   const content = document.querySelector("#post-content").value.trim();
 
@@ -23,11 +22,10 @@ const newFormHandler = async (event) => {
 
 const goToPost = async (event) => {
   event.preventDefault();
-  console.log("working");
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
 
-    document.location.replace(`post/${id}`);
+    document.location.replace(`/post/${id}`);
   }
 };
 const singPost = document.querySelectorAll(".postLink");

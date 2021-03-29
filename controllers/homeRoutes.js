@@ -155,9 +155,14 @@ router.get("/topics/:id", withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (error) {
-    console.log(error);
-    // res.status(500).json(error);
+    res.status(500).json(error);
   }
+});
+
+router.get("/recources", (req, res) => {
+  res.render("recources", {
+    logged_in: req.session.logged_in,
+  });
 });
 
 module.exports = router;
