@@ -178,8 +178,8 @@ router.get("/topics/:id", withAuth, async(req, res) => {
     }
 });
 
-router.get("/recources", (req, res) => {
-    res.render("recources", {
+router.get("/resources", (req, res) => {
+    res.render("resources", {
         logged_in: req.session.logged_in,
     });
 });
