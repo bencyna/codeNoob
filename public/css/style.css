@@ -12,7 +12,7 @@ html {
 /* nav css */
 
 .navbar {
-    background-color: #2e2c29;
+    background-color: #232923;
 }
 
 .navbar h1 {
@@ -23,6 +23,10 @@ html {
 }
 
 .navbar-item {
+    color: honeydew;
+}
+
+.navbar-link {
     color: honeydew;
 }
 
@@ -76,47 +80,134 @@ html {
 }
 
 #loginButt {
-    width: 500px;
+    width: 300px;
     height: 40px;
-    background-color: white;
+    background-color: #232923;
     font-family: "utopia-std-headline", serif;
     font-style: normal;
+    color: #cfc5c5;
     font-weight: 400;
     font-size: 20px;
     border-radius: 5px;
+    border: 3px solid rgb(247, 234, 234);
 }
 
 #loginButt:hover {
-    background-color: rgba(129, 119, 119, 0.3);
+    background-color: honeydew;
+    color: #232923;
     transition: 0.1s ease-out;
     cursor: pointer;
-}
-
-#loginButt:focus {
-    background-color: rgba(127, 40, 185, 0.1);
+    border-radius: 8px;
 }
 
 #signButt {
-    width: 500px;
+    width: 300px;
     height: 40px;
-    background-color: rgb(238, 238, 238);
+    background-color: #232923;
     font-family: "utopia-std-headline", serif;
     font-style: normal;
+    color: #cfc5c5;
     font-weight: 400;
     font-size: 20px;
     border-radius: 5px;
+    border: 3px solid rgb(247, 234, 234);
 }
 
 #signButt:hover {
-    background-color: rgba(129, 119, 119, 0.3);
+    background-color: honeydew;
+    color: #232923;
     transition: 0.1s ease-out;
     cursor: pointer;
+    border-radius: 8px;
 }
 
 #hero_container {
     display: flex;
     text-align: center;
     justify-content: center;
+}
+
+.browse {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-family: "Cormorant Unicase", serif;
+}
+
+.browse h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.browse a {
+    color: honeydew;
+}
+
+.browse a:hover {
+    color: #f8ea6b;
+}
+
+.browse i {
+    padding-right: 100px;
+}
+
+
+/* cn resources page */
+
+.resources {
+    background-color: honeydew;
+}
+
+.resourcesBox {
+    max-width: 75vw;
+    margin: 30px;
+    background-color: #232923;
+    border-radius: 16px;
+    padding: 15px;
+    text-align: justify;
+}
+
+.resourceCard {
+    width: 40%;
+    max-height: fit-content;
+    background-color: #232923e7;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 16px;
+    text-align: justify;
+}
+
+.resourceCard:hover {
+    width: 40%;
+    max-height: fit-content;
+    background-color: #232923e7;
+    padding: 15px;
+    margin: 15px;
+    border: 3px solid rgb(190, 190, 190);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+
+.resourceCard h2 {
+    font-size: 18px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    color: honeydew;
+}
+
+.resourceCard p {
+    font-size: 16px;
+    color: honeydew;
+    width: 90%;
+    max-height: fit-content;
+}
+
+.resourceSS {
+    max-width: 300px;
+    max-height: 300px;
 }
 
 
@@ -136,20 +227,6 @@ html {
     object-fit: cover;
     width: 100vw;
     height: 100%;
-}
-
-.noobBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-#dashLeft h1 {
-    color: rgb(31, 14, 3);
-    font-size: 30px;
-    font-weight: 600;
-    font-family: "Work Sans", sans-serif;
-    background-color: #fffcf5;
 }
 
 .textarea {
@@ -234,6 +311,25 @@ html {
 
 .textOffset {
     padding-left: 15px;
+}
+
+#dashboardCon {
+    display: flex;
+    flex-direction: column;
+}
+
+.noobBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.dashLefty {
+    float: left;
+}
+
+.dashRighty {
+    float: right;
 }
 
 #dashboardCon h1 {
@@ -378,8 +474,8 @@ html {
 }
 
 .postContent {
-    background-color: #808080;
-    color: white;
+    background-color: honeydew;
+    color: #232923;
 }
 
 .postBar {

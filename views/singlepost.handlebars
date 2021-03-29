@@ -1,15 +1,11 @@
 {{>nav}}
 {{>signup}}
 
-<div id="titleForum">
-    <h1>CODE NOOB</h1>
-</div>
 <section class="post">
     <div class="comments"></div>
     <div class="postBar float-container">
         <div class="postBar float-child">~{{post.user.first_name}} {{post.user.last_name}}<button id="deletePost" class="delete {{#unlesseq user_id
             post.user_id}} hide {{/unlesseq}}" data-id={{post.id}}></button>
-
         </div>
     </div>
     </div>
