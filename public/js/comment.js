@@ -29,7 +29,7 @@ const deleteButtonHandler = async (event) => {
     }
 
     const id = event.target.getAttribute("data-id");
-
+    console.log(id);
     const response = await fetch(`/api/posts/${id}`, {
       method: "DELETE",
     });
@@ -61,7 +61,6 @@ if (deleteBtn) {
 
 const deleteCommentHandler = async (event) => {
   event.preventDefault();
-
   if (event.target.hasAttribute("data-id")) {
     const deleteConfirm = confirm(
       "Are you sure you want to delete this comment"
@@ -71,7 +70,7 @@ const deleteCommentHandler = async (event) => {
     }
 
     const id = event.target.getAttribute("data-id");
-    console.log(id);
+    console.log("this is the id: " + id);
 
     const response = await fetch(`/api/comments/dashboard/${id}`, {
       method: "DELETE",
