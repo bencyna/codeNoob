@@ -10,49 +10,12 @@ router.get("/", async(req, res) => {
     res.render("homepage");
 });
 
-// router.get("/", (req, res) => {
-//     console.log(req.query.q)
-//     Post.findAll({
-//             attribute: ["id", "title", "content", "created_at"],
-//             include: [{
-//                     model: Comment,
-//                     attribute: ["id", "comment_text", "post_id", "user_id", "created_at"],
-//                     include: {
-//                         model: User,
-//                         attributes: ["username"],
-//                     }
-//                 },
-//                 {
-//                     model: User,
-//                     attributes: ["username"],
-//                 }
-//             ],
-//             where: {
-//                 title: {
-//                     [Op.like]: `%${req.query.q}%`
-//                 }
-//             },
-//         })
-//         .then(dbPostData => {
-//             const posts = dbPostData.map(post => post.get({ plain: true }));
-//             //   console.log(posts)
-//             res.render('homepage', { posts, loggedIn: req.session.loggedIn });
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
-
-// router.get("/dashboard", (req, res) => {
-//     res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
-// });
-
+// search function
 router.get("/dashboard", async(req, res) => {
     try {
         let postData
-        if (req.query.q){
-           postData = await Post.findAll({
+        if (req.query.q) {
+            postData = await Post.findAll({
                 order: [
                     ["createdAt", "DESC"]
                 ],
@@ -61,13 +24,12 @@ router.get("/dashboard", async(req, res) => {
                     attributes: ["first_name", "last_name"],
                 }, ],
                 where: {
-                title: {
-                    [Op.like]: `%${req.query.q}%`
-                }
+                    title: {
+                        [Op.like]: `%${req.query.q}%`
+                    }
                 }
             });
-        }
-        else {
+        } else {
             postData = await Post.findAll({
                 order: [
                     ["createdAt", "DESC"]
@@ -77,11 +39,9 @@ router.get("/dashboard", async(req, res) => {
                     attributes: ["first_name", "last_name"],
                 }, ],
             });
-    
-
         }
-        
-       console.log(postData)
+
+        console.log(postData)
 
         let users;
         if (req.session.user_id) {
