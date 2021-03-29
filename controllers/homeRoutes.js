@@ -44,21 +44,44 @@ router.get("/", async(req, res) => {
 //         });
 // });
 
-router.get("/dashboard", (req, res) => {
-    res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
-});
+// router.get("/dashboard", (req, res) => {
+//     res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
+// });
 
 router.get("/dashboard", async(req, res) => {
     try {
-        const postData = await Post.findAll({
-            order: [
-                ["createdAt", "DESC"]
-            ],
-            include: [{
-                model: User,
-                attributes: ["first_name", "last_name"],
-            }, ],
-        });
+        let postData
+        if (req.query.q){
+           postData = await Post.findAll({
+                order: [
+                    ["createdAt", "DESC"]
+                ],
+                include: [{
+                    model: User,
+                    attributes: ["first_name", "last_name"],
+                }, ],
+                where: {
+                title: {
+                    [Op.like]: `%${req.query.q}%`
+                }
+                }
+            });
+        }
+        else {
+            postData = await Post.findAll({
+                order: [
+                    ["createdAt", "DESC"]
+                ],
+                include: [{
+                    model: User,
+                    attributes: ["first_name", "last_name"],
+                }, ],
+            });
+    
+
+        }
+        
+       console.log(postData)
 
         let users;
         if (req.session.user_id) {
