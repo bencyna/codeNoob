@@ -1,4 +1,4 @@
- {{>nav}}
+{{>nav}}
 
 <div class="dashPage">
     <div class="dash_container">
@@ -26,14 +26,12 @@
                         </div>
                         {{/each}}
                     </div>
-                    <div class="columns is-two-thirds">                    
+                    <div class="columns is-two-thirds">
                         {{#each (limit posts 10)}}
-                            <div class="postCard">
-                                <div class="middle">
-                                    <h2 class="postLink" data-id={{this.id}}>{{this.title}}</h2>
-                                     <p>{{user.first_name}}</p>
-                                </div>
-                            </div>
+                        <div class="postCard postLink middle" data-id={{this.id}}>
+                            <h2 class="postLink" data-id={{this.id}}>{{this.title}}</h2>
+                            <p class="postLink" data-id={{this.id}}>{{user.first_name}}</p>
+                        </div>
                         {{/each}}
                     </div>
                 </div>
