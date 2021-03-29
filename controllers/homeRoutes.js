@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection.js");
-const { Post, User, Comment } = require("../models");
+const { Post, User, Comment, Topic } = require("../models");
 const withAuth = require("../utils/auth.js");
 const router = require("express").Router();
 
@@ -29,9 +29,25 @@ router.get("/dashboard", async (req, res) => {
       users = userData.get({ plain: true });
     }
 
-    const posts = postData.map((project) => project.get({ plain: true }));
+    const topicData = await Topic.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["first_name", "last_name"],
+        },
+      ],
+    });
 
-    res.render("dashboard", { posts, users, logged_in: req.session.logged_in });
+    const posts = postData.map((project) => project.get({ plain: true }));
+    const topics = topicData.map((topic) => topic.get({ plain: true }));
+    console.log(topics);
+
+    res.render("dashboard", {
+      posts,
+      topics,
+      users,
+      logged_in: req.session.logged_in,
+    });
   } catch (error) {
     console.log(error);
     // res.status(500).json(error);
@@ -85,7 +101,7 @@ router.get("/post/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["comments"],
+        attributes: ["comments", "id", "user_id"],
         order: [["createdAt", "DESC"]],
         include: {
           model: User,
@@ -104,24 +120,44 @@ router.get("/post/:id", (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
-      console.log(post);
-
-      // console.log(
-      //   "comment id is " +
-      //     post.Comments[2].user.id +
-      //     ". post id is " +
-      //     post.user_id
-      // );
 
       res.render("singlepost", {
         post,
         logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
       });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get("/topics/:id", withAuth, async (req, res) => {
+  try {
+    const topicData = await Topic.findByPk(req.params.id, {
+      include: [
+        {
+          model: Post,
+          include: {
+            model: User,
+            attributes: ["first_name", "email", "id"],
+          },
+        },
+      ],
+    });
+
+    const topics = topicData.get({ plain: true });
+    console.log(topics);
+
+    res.render("topics", {
+      topics,
+      logged_in: req.session.logged_in,
+    });
+  } catch (error) {
+    console.log(error);
+    // res.status(500).json(error);
+  }
 });
 
 module.exports = router;

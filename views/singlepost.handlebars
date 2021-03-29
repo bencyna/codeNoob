@@ -7,9 +7,11 @@
 <section class="post">
     <div class="comments"></div>
     <div class="postBar float-container">
-        <div class="postBar float-child">~{{post.user.first_name}} {{post.user.last_name}}</div>
-        <button id="deletePost" class="postBar float-child" data-id={{post.id}}>delete<i
-                class="far fa-trash-alt"></i></button>
+        <div class="postBar float-child">~{{post.user.first_name}} {{post.user.last_name}} {{#ifeq user_id
+            post.user_id}} <button id="deletePost" class="delete" data-id={{post.id}}></button>
+            {{/ifeq}}
+        </div>
+    </div>
     </div>
     <div class="postPage box">{{post.title}}</div>
     <div class="postContent box">
@@ -27,13 +29,25 @@
     <script src="/js/signUp.js"></script>
     {{/unless}}
     {{#each post.Comments as |comment|}}
-    {{!-- this works if comment.user.id is as a string --}}
-    {{#ifeq post.user_id comment.user.id }}
-    <div class="ownerBar">~{{comment.user.first_name}}</div>
-    <div class="commentOwner box">{{comment.comments}}</div>
+    {{!-- post.user_id is undefined here --}}
+    {{#ifeq posts.user_id comment.user.id }}
+    {{!-- We have to figure out how to show the delete button only to the owner of the comment --}}
+    <div class="ownerBar">Owner~{{comment.user.first_name}}</div>
+    <div class="commentOwner box">{{#ifeq user_id wrongcomment.user_id}} <button class="deletePost delete"
+            data-id={{comment.id}}></button>
+        {{/ifeq}}
+        {{comment.comments}}</div>
     {{else}}
-    <div class="commentBar">~{{comment.user.first_name}}</div>
+    <div class="commentBar">~{{comment.user.first_name}}{{#ifeq this.user_id wrongcomment.user_id}} <button
+            class="deleteComment delete" data-id={{comment.id}}>
+        </button>
+        {{/ifeq}}
+        {{#log this.user_id}}
+        {{/log}}
+    </div>
     <div class="commentPage box">{{comment.comments}}</div>
+    {{#ifeq user.id req.session.user_id}}
+    {{/ifeq}}
     {{/ifeq}}
     {{/each}}
 
