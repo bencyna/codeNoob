@@ -1,15 +1,67 @@
-html {
-    background-color: white;
-}
-
 body {
     font-family: "Work Sans", sans-serif;
     font-weight: 300;
-    color: #2e2c29;
+    color: honeydew;
 }
 
+html {
+    background-color: #232923;
+}
+
+
+/* searchbar */
+
+.search-box {
+    position: absolute;
+    top: 50%;
+    left: 50;
+    transform: translate(-50%, -50%);
+    background: #2F3640;
+    height: auto;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.search-box:hover>.search-txt {
+    width: 240;
+    padding: 0 6px;
+}
+
+.search-box:hover>.search-btn {
+    background: seashell;
+}
+
+.search-btn {
+    color: #8D81CE;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2F3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: seashell;
+    font-size: 15px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 240px
+}
+
+
+/* nav css */
+
 .navbar {
-    background-color: #2e2c29;
+    background-color: #232923;
 }
 
 .navbar h1 {
@@ -22,6 +74,201 @@ body {
 .navbar-item {
     color: honeydew;
 }
+
+.navbar-link {
+    color: honeydew;
+}
+
+.navbar-dropdown {
+    background-color: #232923;
+}
+
+.navbar-dropdown {
+    background-color: #232923;
+}
+
+
+/* cn landing page */
+
+#landTitle h1 {
+    font-size: 100px;
+    font-family: "Cormorant Unicase", serif;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 0px;
+}
+
+#landCallToAct h2 {
+    font-size: 48px;
+    font-family: "utopia-std-headline", serif;
+    text-align: center;
+    margin: 0px;
+}
+
+#landCallToAct h3 {
+    font-size: 48px;
+    font-family: "utopia-std-headline", serif;
+    text-align: center;
+    color: #cfc5c5;
+}
+
+#landBenefits li {
+    font-size: 32px;
+    font-weight: 400;
+    text-align: center;
+    padding: 0;
+}
+
+#browse,
+#searchTitle,
+#landingSearch {
+    text-align: center;
+}
+
+#browseBtn {
+    margin-top: 10px;
+}
+
+#landingButtonCon {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#loginButt {
+    width: 300px;
+    height: 40px;
+    background-color: #232923;
+    font-family: "utopia-std-headline", serif;
+    font-style: normal;
+    color: #cfc5c5;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 3px solid rgb(247, 234, 234);
+}
+
+#loginButt:hover {
+    background-color: honeydew;
+    color: #232923;
+    transition: 0.1s ease-out;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#signButt {
+    width: 300px;
+    height: 40px;
+    background-color: #232923;
+    font-family: "utopia-std-headline", serif;
+    font-style: normal;
+    color: #cfc5c5;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 3px solid rgb(247, 234, 234);
+}
+
+#signButt:hover {
+    background-color: honeydew;
+    color: #232923;
+    transition: 0.1s ease-out;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#hero_container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.browse {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-family: "Cormorant Unicase", serif;
+}
+
+.browse h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.browse a {
+    color: honeydew;
+}
+
+.browse a:hover {
+    color: #f8ea6b;
+}
+
+.browse i {
+    padding-right: 100px;
+}
+
+
+/* cn resources page */
+
+.resources {
+    background-color: honeydew;
+}
+
+.resourcesBox {
+    max-width: 75vw;
+    margin: 30px;
+    background-color: #232923;
+    border-radius: 16px;
+    padding: 15px;
+    text-align: justify;
+}
+
+.resourceCard {
+    width: 40%;
+    max-height: fit-content;
+    background-color: #232923e7;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 16px;
+    text-align: justify;
+}
+
+.resourceCard:hover {
+    width: 40%;
+    max-height: fit-content;
+    background-color: #232923e7;
+    padding: 15px;
+    margin: 15px;
+    border: 3px solid rgb(190, 190, 190);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+
+.resourceCard h2 {
+    font-size: 18px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    color: honeydew;
+}
+
+.resourceCard p {
+    font-size: 16px;
+    color: honeydew;
+    width: 90%;
+    max-height: fit-content;
+}
+
+.resourceSS {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+
+/* cn dashboard */
 
 .dash_container {
     height: 80vh;
@@ -39,25 +286,12 @@ body {
     height: 100%;
 }
 
-.noobBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-#dashLeft h1 {
-    color: rgb(31, 14, 3);
-    font-size: 30px;
-    font-weight: 600;
-    font-family: "Work Sans", sans-serif;
-    background-color: #fffcf5;
-}
-
 .textarea {
     resize: vertical;
 }
 
 #logoutBtn,
+#addModalBtn,
 .postLink {
     cursor: pointer;
 }
@@ -79,6 +313,7 @@ body {
 .welcomeBack {
     background-color: rgba(7, 7, 7, 0.692);
     border-radius: 5px;
+    padding: 25px;
 }
 
 .welcomeBack h1 {
@@ -94,24 +329,31 @@ body {
     font-family: "Work Sans", sans-serif;
     text-align: center;
     color: honeydew;
-    width: 95vw;
-    padding: 20px;
-    margin: 10px;
-    background-color: rgb(250, 235, 246);
-    border: 3px solid black;
-}
-
-.welcomeBack h1 {
-    font-size: 50px;
-    font-weight: 600;
-    font-family: "Cormorant Unicase", serif;
-    text-align: center;
 }
 
 .welcomeBack textarea {
     resize: vertical;
     min-height: 40px;
     max-height: 450px;
+}
+
+.addModalDiv {
+    background-color: rgba(7, 7, 7, 0);
+    border-radius: 5px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+#addModalBtn {
+    background-color: rgba(7, 7, 7, 0);
+    border-radius: 5px;
+    background-color: white;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 25px;
+    padding: 5px;
 }
 
 .form {
@@ -126,6 +368,25 @@ body {
 
 .textOffset {
     padding-left: 15px;
+}
+
+#dashboardCon {
+    display: flex;
+    flex-direction: column;
+}
+
+.noobBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.dashLefty {
+    float: left;
+}
+
+.dashRighty {
+    float: right;
 }
 
 #dashboardCon h1 {
@@ -168,12 +429,21 @@ body {
     font-size: 12px;
     color: honeydew;
     width: 90%;
-    align-items: center;
     max-height: fit-content;
-    background-color: #ece5d4fd;
-    padding: 15px;
-    margin: 15px;
-    border: 3px solid black;
+}
+
+
+/* general css helpers */
+
+.hide {
+    display: block;
+    visibility: hidden;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
 }
 
 .centerScreen {
@@ -182,103 +452,11 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    /* for IE 9 */
     -webkit-transform: translate(-50%, -50%);
-    /* for Safari */
-}
-
-#landTitle h1 {
-    font-size: 100px;
-    font-family: "Cormorant Unicase", serif;
-    font-weight: bold;
-    text-align: center;
-    padding-bottom: 0px;
-}
-
-#landCallToAct h2 {
-    font-size: 60px;
-    font-family: "Cormorant Unicase", serif;
-    font-weight: 300;
-    text-align: center;
-    padding: 0px;
-}
-
-#landCallToAct h3 {
-    font-size: 60px;
-    font-family: "Cormorant Unicase", serif;
-    font-weight: 300;
-    text-align: center;
-    color: #797979;
-}
-
-#landBenefits li {
-    font-size: 32px;
-    font-weight: 400;
-    text-align: center;
-    padding: 0;
-}
-
-#browse,
-#searchTitle,
-#landingSearch {
-    text-align: center;
-}
-
-#browseBtn {
-    margin-top: 10px;
-}
-
-#landingButtonCon {
-    max-width: 100%;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-}
-
-#loginButt {
-    width: 500px;
-    height: 40px;
-    background-color: white;
-    font-family: "utopia-std-headline", serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-}
-
-#loginButt:hover {
-    background-color: rgba(129, 119, 119, 0.3);
-    transition: 0.1s ease-out;
-    cursor: pointer;
-}
-
-#loginButt:focus {
-    background-color: rgba(127, 40, 185, 0.1);
-}
-
-#signButt {
-    width: 500px;
-    height: 40px;
-    background-color: rgb(238, 238, 238);
-    font-family: "utopia-std-headline", serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-}
-
-#signButt:hover {
-    background-color: rgba(129, 119, 119, 0.3);
-    transition: 0.1s ease-out;
-    cursor: pointer;
-}
-
-#hero_container {
-    display: flex;
-    text-align: center;
-    justify-content: center;
 }
 
 
-/* The Modal (background) */
+/* modal (background) */
 
 .modal {
     display: none;
@@ -295,19 +473,19 @@ body {
 }
 
 
-/* Modal Content */
+/* modal content */
 
 .modal-content {
-    background-color: #fffcf5;
+    background-color: rgba(7, 7, 7, 0.692);
     margin: auto;
     padding: 20px;
-    border: 5px solid black;
+    border-radius: 5px;
     width: 30%;
-    font-family: "Cormorant Unicase", serif;
+    font-family: "Work Sans", serif;
 }
 
 
-/* Adding code for single post */
+/* cn posts styling */
 
 #titleForum {
     position: relative;
@@ -353,8 +531,8 @@ body {
 }
 
 .postContent {
-    background-color: #808080;
-    color: white;
+    background-color: honeydew;
+    color: #232923;
 }
 
 .postBar {
@@ -372,24 +550,20 @@ body {
 .inBtn,
 #logoutBtn {
     border: none;
-    background-color: #2e2c29;
+    background-color: #232923;
     color: honeydew;
 }
 
 
-/* #deletePost, */
+/* cn delete css */
 
 .inBtn:hover,
 #logoutBtn:hover {
     max-height: fit-content;
     background-color: rgba(255, 255, 255, 0.692);
+    color: rgb(247, 234, 234);
     cursor: pointer;
     transition: 0.2s ease-in;
-}
-
-.hide {
-    display: block;
-    visibility: hidden;
 }
 
 .topicCard {

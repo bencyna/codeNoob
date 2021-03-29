@@ -10,12 +10,14 @@ module.exports = {
     }
     return word;
   },
-  ifEquals: (arg1, arg2, options) => {
-    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
-  },
   ifeq: (a, b, options) => {
     if (a == b) {
-      console.log("hello");
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  },
+  unlesseq: (a, b, options) => {
+    if (a !== b) {
       return options.fn(this);
     }
     return options.inverse(this);

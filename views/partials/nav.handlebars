@@ -1,38 +1,57 @@
-  {{>login}}
+{{>login}}
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <div class="navbar-item">
       <h1>code noob</h1>
     </div>
   </div>
-  <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a href="/dashboard" class="navbar-item">
-        <i data-feather="home"></i>
-      </a>
+      <div class="navbar-menu">
+      <!-- hidden on mobile -->
+      <a href="/dashboard" class="navbar-item"><i data-feather="home"></i></a>      
+      <a href="/resources" class="navbar-item"><i data-feather="book-open"></i></a>
+      </div>
     </div>
-    <div id="navbar-searchbar" class="searchbar">
+    <div id="navbar-searchbar" class="search">
+      <form action="/" method="GET">
+        <input type="search" name="q" aria-label="Search">
+        <button id="searchSubmit" type="submit">Search</button>
+      </form>
     </div>
-    {{#if logged_in}}
-    <li class="navbar-end">
-      {{!-- if logged in logout if not login a --}}
-      <button id="logoutBtn" class="navbar-item">Logout</button>
-    </li>
-    <script src="/js/logout.js"></script>
-    {{/if}}
-    {{#unless logged_in}}
-    <li class="navbar-end">
-      {{!-- if logged in logout if not login a --}}
-      <button id="loginBtn" class="inBtn" class="navbar-item">Login</button>
-    </li>
-    <script src="/js/login.js"></script>
-    {{/unless}}
-    {{#if logged_in}}
-    <div class="navbar-end">
-      <a href="/user" class="navbar-item">
-        <i data-feather="user"></i>
-      </a>
+
+    <div class="navbar-end">        
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link is-arrowless">
+          <i data-feather="menu"></i>
+        </a>
+        <div class="navbar-dropdown is-right">
+          {{#if logged_in}}
+          <a href= "/user" class="navbar-item">
+            <i data-feather="user"></i>
+            User
+          </a>
+          {{/if}}
+          <a href= "/resources"class="navbar-item">
+            <i data-feather="book-open"></i>
+            Resources
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            {{#if logged_in}}
+            <button id="logoutBtn" class="navbar-item"><i data-feather="log-out"></i>Logout</button>
+            <script src="/js/logout.js"></script>
+            {{/if}}
+            {{!-- if logged in logout if not login a --}}
+            {{#unless logged_in}}
+            <button id="loginBtn" class="inBtn" class="navbar-item"><i data-feather="log-in"></i>Login</button>
+            <script src="/js/login.js"></script>
+            {{/unless}}
+            {{!-- if logged in logout if not login a --}}
+          </div>
+          </div>       
+        </div>
+      </div>
     </div>
-    {{/if}}
+    
   </div>
 </nav>
