@@ -94,18 +94,6 @@ body {
     font-family: "Work Sans", sans-serif;
     text-align: center;
     color: honeydew;
-    width: 95vw;
-    padding: 20px;
-    margin: 10px;
-    background-color: rgb(250, 235, 246);
-    border: 3px solid black;
-}
-
-.welcomeBack h1 {
-    font-size: 50px;
-    font-weight: 600;
-    font-family: "Cormorant Unicase", serif;
-    text-align: center;
 }
 
 .welcomeBack textarea {
