@@ -1,4 +1,4 @@
-{{>nav}}
+ {{>nav}}
 
 <div class="dashPage">
     <div class="dash_container">
@@ -7,19 +7,9 @@
             <h1>Welcome {{#if logged_in}}back, {{users.first_name}} {{/if}}</h1>
             <h2>It is great to have you here {{#if logged_in}} and contributing! {{/if}}</h2>
             {{#if logged_in}}
-            <form class="form new-post-form">
-                <div class="form-group">
-                    <label for="post-title">post title:</label><br>
-                    <input class="form-input" type="text" id="post-name" name="post-name" />
-                </div>
-                <div class="form-group">
-                    <label for="project-content">content:</label><br>
-                    <textarea class="form-input" id="post-content" name="post-content"></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="button" class="postBtn btn-primary">create</button>
-                </div>
-            </form>
+            <div class="addModalDiv">
+                <button id="addModalBtn"><i data-feather="plus"></i>Add Post</button>
+            </div>
             {{/if}}
         </div>
     </div>
@@ -29,16 +19,27 @@
             <div id="dashboardCon">
                 <h1>Discussions and Articles</h1>
                 <div class="noobBox">
-                    {{#each (limit posts 10)}}
-                    <div class="postCard">
-                        <h2 class="postLink" data-id={{this.id}}>{{this.title}}</h2>
-                        <p>{{user.first_name}}</p>
+                    <div class="columns is-one-third">
+                        {{#each topics as |topic|}}
+                        <div class="postCard topicCard">
+                            <h2 class="topicClick" data-id={{this.id}}>{{this.topic_name}}</h2>
+                        </div>
+                        {{/each}}
                     </div>
-                    {{/each}}
-                    {{#each topics as |topic|}}
-                    <div class="postCard topicCard">
-                        <h2 class="topicClick" data-id={{this.id}}>{{this.topic_name}}</h2>
+                    <div class="columns is-two-thirds">                    
+                        {{#each (limit posts 10)}}
+                            <div class="postCard">
+                                <div class="middle">
+                                    <h2 class="postLink" data-id={{this.id}}>{{this.title}}</h2>
+                                     <p>{{user.first_name}}</p>
+                                </div>
+                            </div>
+                        {{/each}}
                     </div>
-                    {{/each}}
-                    <script src="./js/topics.js"></script>
-                    <script src="./js/post.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/topics.js"></script>
+    <script src="./js/post.js"></script>
+</div>
