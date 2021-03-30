@@ -10,17 +10,19 @@
       <!-- hidden on mobile -->
       <a href="/dashboard" class="navbar-item"><i data-feather="home"></i></a>
       <a href="/resources" class="navbar-item"><i data-feather="book-open"></i></a>
+      <div id="navbar-searchbar" class="search-box-container">
+        <form action="/dashboard" method="GET">
+          <div class="input-group">
+            <input type="search" name="q" aria-label="Search">
+            {{!-- <button id="searchSubmit" type="submit">Search</button> --}}
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-  <div id="navbar-searchbar" class="search">
-    <form action="/dashboard" method="GET">
-      <input type="search" name="q" aria-label="Search">
-      <button id="searchSubmit" type="submit">Search</button>
-    </form>
-  </div>
-
+  
   <div class="navbar-end">
-    <div class="navbar-item has-dropdown is-hoverable">
+    <div id="navBurger"class="navbar-item has-dropdown is-hoverable">
       <a class="navbar-link is-arrowless">
         <i data-feather="menu"></i>
       </a>
