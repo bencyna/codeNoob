@@ -2,22 +2,82 @@ const sequelize = require("../config/connection.js");
 const { Post, User, Comment, Topic } = require("../models");
 const withAuth = require("../utils/auth.js");
 const router = require("express").Router();
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 router.get("/", async (req, res) => {
   res.render("homepage");
 });
 
+// router.get("/", (req, res) => {
+//     console.log(req.query.q)
+//     Post.findAll({
+//             attribute: ["id", "title", "content", "created_at"],
+//             include: [{
+//                     model: Comment,
+//                     attribute: ["id", "comment_text", "post_id", "user_id", "created_at"],
+//                     include: {
+//                         model: User,
+//                         attributes: ["username"],
+//                     }
+//                 },
+//                 {
+//                     model: User,
+//                     attributes: ["username"],
+//                 }
+//             ],
+//             where: {
+//                 title: {
+//                     [Op.like]: `%${req.query.q}%`
+//                 }
+//             },
+//         })
+//         .then(dbPostData => {
+//             const posts = dbPostData.map(post => post.get({ plain: true }));
+//             //   console.log(posts)
+//             res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// });
+
+// router.get("/dashboard", (req, res) => {
+//     res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
+// });
+
 router.get("/dashboard", async (req, res) => {
   try {
-    const postData = await Post.findAll({
-      order: [["createdAt", "DESC"]],
-      include: [
-        {
-          model: User,
-          attributes: ["first_name", "last_name"],
+    let postData;
+    if (req.query.q) {
+      postData = await Post.findAll({
+        order: [["createdAt", "DESC"]],
+        include: [
+          {
+            model: User,
+            attributes: ["first_name", "last_name"],
+          },
+        ],
+        where: {
+          title: {
+            [Op.like]: `%${req.query.q}%`,
+          },
         },
-      ],
-    });
+      });
+    } else {
+      postData = await Post.findAll({
+        order: [["createdAt", "DESC"]],
+        include: [
+          {
+            model: User,
+            attributes: ["first_name", "last_name"],
+          },
+        ],
+      });
+    }
+
+    console.log(postData);
 
     let users;
     if (req.session.user_id) {
@@ -160,7 +220,7 @@ router.get("/topics/:id", withAuth, async (req, res) => {
 });
 
 router.get("/recources", (req, res) => {
-  res.render("recources", {
+  res.render("resources", {
     logged_in: req.session.logged_in,
   });
 });
