@@ -2,9 +2,8 @@ const sequelize = require("../config/connection.js");
 const { Post, User, Comment, Topic } = require("../models");
 const withAuth = require("../utils/auth.js");
 const router = require("express").Router();
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-
 
 router.get("/", async(req, res) => {
     res.render("homepage");
@@ -74,6 +73,24 @@ router.get("/dashboard", async(req, res) => {
         console.log(error);
         // res.status(500).json(error);
     }
+
+    const topicData = await Topic.findAll({
+        include: [{
+            model: User,
+            attributes: ["first_name", "last_name"],
+        }, ],
+    });
+
+    const posts = postData.map((project) => project.get({ plain: true }));
+    const topics = topicData.map((topic) => topic.get({ plain: true }));
+    console.log(topics);
+
+    res.render("dashboard", {
+        posts,
+        topics,
+        users,
+        logged_in: req.session.logged_in,
+    });
 });
 
 router.get("/login", (req, res) => {
