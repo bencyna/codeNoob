@@ -26,16 +26,16 @@
     <script src="/js/signUp.js"></script>
     {{/unless}}
     {{#each post.Comments as |comment|}}
-    {{!-- post.user_id is undefined here --}}
-    {{#ifeq ../posts.user_id comment.user.id }}
+    {{#log @root.post}} {{/log}}
+    {{#ifeq @root.post.user_id comment.user.id }}
     {{!-- We have to figure out how to show the delete button only to the owner of the comment --}}
-    <div class="ownerBar">Owner~{{comment.user.first_name}}</div>
-    <div class="commentOwner box">{{#ifeq user_id comment.user_id}} <button class="deletePost delete"
+    <div class="ownerBar">~{{comment.user.first_name}}</div>
+    <div class="commentOwner box">{{#ifeq @root.user_id comment.user_id}} <button class="deleteComment delete"
             data-id={{comment.id}}></button>
         {{/ifeq}}
         {{comment.comments}}</div>
     {{else}}
-    <div class="commentBar">~{{comment.user.first_name}}{{#ifeq user_id comment.user_id}} <button
+    <div class="commentBar">~{{comment.user.first_name}}{{#ifeq @root.user_id comment.user_id}} <button
             class="deleteComment delete" data-id={{comment.id}}>
         </button>
         {{/ifeq}}
