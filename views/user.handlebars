@@ -1,23 +1,15 @@
 {{>nav}}
+{{>newpost}}
 <div class="dash_container">
     <img id="heroImage" src="./images/hero_medium.jpeg"></img>
     <div class="welcomeBack centerScreen">
         <h1>You can make a new post here or veiw your old posts below</h1>
-        <form class="form new-post-form">
-            <div class="form-group">
-                <label for="post-title">post title:</label><br>
-                <input class="form-input" type="text" id="post-name" name="post-name" />
-            </div>
-            <div class="form-group">
-                <label for="project-content">content:</label><br>
-                <textarea class="form-input" id="post-content" name="post-content"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="button" class="postBtn btn-primary">create</button>
-            </div>
-        </form>
+        <div class="addModalDiv">
+            <button id="addModalBtn"><i data-feather="plus"></i>Add Post</button>
+        </div>
     </div>
 </div>
+
 <div class="welcomeBack">
     <h1>Your Posts</h1>
 </div>

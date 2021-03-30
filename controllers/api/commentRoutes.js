@@ -57,16 +57,19 @@ router.put("/dashboard/:id", withAuth, async () => {
 //     }
 // })
 
-router.delete("/dashboard/:id", withAuth, async (req, resgi) => {
+router.delete("/dashboard/:id", withAuth, async (req, res) => {
   try {
     const deleteComment = await Comment.destroy({
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
+    if (deleteComment === 0) {
+      throw "Cannot delete comment";
+    }
     res.status(200).json(deleteComment);
   } catch (error) {
-    console.log(error);
     res.status(400).json(error);
   }
 });

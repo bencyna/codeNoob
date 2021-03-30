@@ -6,7 +6,9 @@ router.post("/dashboard", async (req, res) => {
     const postData = await Post.create({
       post: req.body.content,
       title: req.body.title,
+      topic_id: req.body.checked,
       user_id: req.session.user_id,
+      logged_in_user_id: req.session.user_id,
     });
     res.status(200).json(postData);
   } catch (error) {
