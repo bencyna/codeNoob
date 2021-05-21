@@ -1,9 +1,12 @@
 # Code Noob
- 
- ## Presentation
- https://docs.google.com/presentation/d/1y03sEs3EtHdUnEcGY8N8dnFJEMzohKmEYA4UWoE9alw/edit#slide=id.p
+
+## Presentation
+
+https://docs.google.com/presentation/d/1y03sEs3EtHdUnEcGY8N8dnFJEMzohKmEYA4UWoE9alw/edit#slide=id.p
 
 ## Demo
+
+https://code-noob.herokuapp.com/
 
 ## Table of Contents
 
